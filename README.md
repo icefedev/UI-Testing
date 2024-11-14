@@ -6,3 +6,8 @@
 ## Library
 - SeleniumLibrary
 - String
+
+## Complie and Run
+```
+  robot -d result TestCases/demo.robot
+```
