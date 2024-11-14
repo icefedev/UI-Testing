@@ -3,7 +3,7 @@ Resource    ../Keywords/keyword.resource
 
     
 *** Test Cases ***
-Open and Login to SauceDemo
+001_Validate the items and totals
     Open a browser and navigate to Sauce Demo
     Log in with test credentials
     Add a few products to the cart

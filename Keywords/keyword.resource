@@ -7,46 +7,45 @@ Resource    ../Variables/variable.resource
 *** Keywords ***
 Open a browser and navigate to Sauce Demo
     Open Browser    ${url_test_login}    chrome    options=add_argument("--start-maximized")
+    Capture Page Screenshot    filename=Login_page.png
 
 Log in with test credentials
     Input Text      xpath:${text_username}    ${username}
     Input Text      xpath:${text_password}    ${password}
     Click Button    xpath:${text_login}
+    Capture Page Screenshot    filename=Store_page.png
 
 
 Add a few products to the cart
     ${itemname_backpack}     Get Text    xpath:${text_backpack} 
     ${itemname_bikelight}    Get Text    xpath:${text_bikelight} 
     ${itemname_tshirt}       Get Text    xpath:${text_thsirt} 
-
     Set Global Variable    ${itemname_backpack}
     Set Global Variable    ${itemname_bikelight}
     Set Global Variable    ${itemname_tshirt}
-
     Click Button    xpath:${button_backpack}
     Click Button    xpath:${button_bikelights}
     Click Button    xpath:${button_tshirt}
+    Capture Page Screenshot    filename=Add_Cart.png
 
 
 
 Go to the Cart and validate that all selected items are present
-    
     Click Link      xpath:${button_cart}
-
     ${itemname_backpack2}     Get Text    xpath:${text_backpack2} 
     ${itemname_bikelight2}    Get Text    xpath:${text_bikelight2} 
     ${itemname_tshirt2}       Get Text    xpath:${text_thsirt2} 
-
     Should Be Equal    ${itemname_backpack}     ${itemname_backpack2} 
     Should Be Equal    ${itemname_bikelight}    ${itemname_bikelight2} 
     Should Be Equal    ${itemname_tshirt}       ${itemname_tshirt2} 
-    
+    Capture Page Screenshot    filename=Cart_page.png
 
 Continue to checkout and validate the items and totals at each step
     Click checkout and Fill The Information
     Validate Product and Item Total
     Calculate Tax 
     Check totals
+    Capture Page Screenshot    filename=Checkout_page.png
 
 
 Click checkout and Fill The Information
